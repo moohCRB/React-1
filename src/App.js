@@ -9,7 +9,9 @@ class App extends Component {
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword. 
       <div className="App">  
      <h1>Hi, I'm a React App</h1>
-     <Person/>
+     <Person name="Bob"/>
+     <Person name="Alice"/>
+     <Person name="Lucy"/>
       </div>
     );
   // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi I\'m a React App!'))// Equivalent to this
