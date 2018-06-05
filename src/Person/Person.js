@@ -4,8 +4,8 @@
 import React from 'react';
 
 
-const person = () => {
-    return <p>I'm a Person!</p>
+const person = ({name}) => { 
+    return <p>My name is {name}!</p>
 }
 
 export default person;
