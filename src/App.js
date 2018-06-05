@@ -4,14 +4,15 @@ import Person from "./Person/Person"; // this has to be imported as an uppercase
 
 class App extends Component {
   render() {
+    const a =4;
     return ( // This is gets compiled and is equivalent to the next return statement
 
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword. 
       <div className="App">  
      <h1>Hi, I'm a React App</h1>
-     <Person name="Bob"/>
-     <Person name="Alice"/>
-     <Person name="Lucy"/>
+     <Person name="Bob" age="31"/>
+     <Person name="Alice" age="21">My Hobbies: Racing {a}</Person>
+     <Person name="Lucy" age="23"/>
       </div>
     );
   // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi I\'m a React App!'))// Equivalent to this
