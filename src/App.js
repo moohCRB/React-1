@@ -3,6 +3,22 @@ import './App.css';
 import Person from "./Person/Person"; // this has to be imported as an uppercase for it to be rendered.
 
 class App extends Component {
+  // What we're about to do can be only with classes that EXTENDS components
+  state = {
+    persons: [
+      {
+        name: "Bob",age:31
+      },
+      {
+        name: "Manu",age:21
+      },
+      {
+        name: "Lucy",age:23
+      },
+    ]
+  }
+
+
   render() {
     const a =4;
     return ( // This is gets compiled and is equivalent to the next return statement
@@ -10,7 +26,8 @@ class App extends Component {
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword. 
       <div className="App">  
      <h1>Hi, I'm a React App</h1>
-     <Person name="Bob" age="31"/>
+     <button>Switch Name</button>
+     <Person name={this.state.persons[0].name} age="31"/> {/* these names are hardcoded, we need to use state to make them more dynamic*/}
      <Person name="Alice" age="21">My Hobbies: Racing {a}</Person>
      <Person name="Lucy" age="23"/>
       </div>
