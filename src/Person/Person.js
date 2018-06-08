@@ -7,7 +7,7 @@ import React from 'react';
 const person = (props) => { 
     return (
     <div>
-        <p>My name is {props.name} and I am {props.age} years old!</p>
+        <p onClick={props.click}>My name is {props.name} and I am {props.age} years old!</p>
         {/* Children are a special property given to us by react which is the text in between the <> </> tags that are passed into this component */}
        <p> {props.children}</p> 
         </div>
