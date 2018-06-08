@@ -18,7 +18,9 @@ class App extends Component {
     ]
   }
 
-
+  switchNameHandler = ()=>{ /*Good practice to call it handler to indicate that it is changed by an event handler*/
+  console.log("Was clicked!");
+  }
   render() {
     const a =4;
     return ( // This is gets compiled and is equivalent to the next return statement
@@ -26,7 +28,7 @@ class App extends Component {
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword. 
       <div className="App">  
      <h1>Hi, I'm a React App</h1>
-     <button>Switch Name</button>
+     <button onClick={this.switchNameHandler}>Switch Name</button> {/*onClick with a capital C as its JSX, miniscule for HTML*/}
      <Person name={this.state.persons[0].name} age="31"/> {/* these names are hardcoded, we need to use state to make them more dynamic*/}
      <Person name="Alice" age="21">My Hobbies: Racing {a}</Person>
      <Person name="Lucy" age="23"/>
