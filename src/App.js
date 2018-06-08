@@ -19,7 +19,21 @@ class App extends Component {
   }
 
   switchNameHandler = ()=>{ /*Good practice to call it handler to indicate that it is changed by an event handler*/
-  console.log("Was clicked!");
+  // console.log("Was clicked!");
+  // this.state.persons[0].name="Bobilian"; // This is also a NO NO as it changes the state directly
+  this.setState({// Use this instead, a special method React gives you to update the state property and updates the DOM.
+    persons:[
+      {
+        name: "Bobilian",age:31
+      },
+      {
+        name: "Manuuuu",age:21
+      },
+      {
+        name: "Lucaay",age:23
+      },
+    ]
+  }) 
   }
   render() {
     const a =4;
@@ -31,7 +45,7 @@ class App extends Component {
      <button onClick={this.switchNameHandler}>Switch Name</button> {/*onClick with a capital C as its JSX, miniscule for HTML*/}
      <Person name={this.state.persons[0].name} age="31"/> {/* these names are hardcoded, we need to use state to make them more dynamic*/}
      <Person name="Alice" age="21">My Hobbies: Racing {a}</Person>
-     <Person name="Lucy" age="23"/>
+     <Person name={this.state.persons[2].name} age="23"/>
       </div>
     );
   // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi I\'m a React App!'))// Equivalent to this
