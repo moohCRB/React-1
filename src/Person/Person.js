@@ -10,6 +10,8 @@ const person = (props) => {
         <p onClick={props.click}>My name is {props.name} and I am {props.age} years old!</p>
         {/* Children are a special property given to us by react which is the text in between the <> </> tags that are passed into this component */}
        <p> {props.children}</p> 
+       <input type="text" onChange={props.changed} value={props.name}/> {/*two way binding*/}
+       {/*onChange will be fired whenever the value of the input changes*/}
         </div>
     )
 }
