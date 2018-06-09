@@ -52,12 +52,22 @@ class App extends Component {
   }
   render() {
     const a =4;
+    const style = { // styling the hover state is hard using inline styles, one restriction of this method but good for scoping
+      // as it you decide which components use this style
+      backgroundColor: "white",
+      font:"inherit",
+      border:"1px solid blue",
+      padding:"8px",
+      cursor:"pointer"
+    }
     return ( // This is gets compiled and is equivalent to the next return statement
 
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword. 
       <div className="App">  
      <h1>Hi, I'm a React App</h1>
-     <button onClick={()=>this.switchNameHandler("SecondWayToPassArguments")}>Switch Name</button> {/*onClick with a capital C as its JSX, miniscule for HTML*/}
+     <button 
+     style={style}
+     onClick={()=>this.switchNameHandler("SecondWayToPassArguments")}>Switch Name</button> {/*onClick with a capital C as its JSX, miniscule for HTML*/}
     {/*We can also send arguments to the event handler and there's two ways to do this:
       1: binding "this" and passing the argument. e.g  <button onClick={this.switchNameHandler.bind(this,"Name Based on this click")} />
       2: Arrow functions as shown above (this is conserved in arrow functions remember?) tends to be less efficient, use bind where possible
