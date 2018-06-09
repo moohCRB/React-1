@@ -35,6 +35,21 @@ class App extends Component {
     ]
   }) 
   }
+  nameChangedHandler = (event)=>{
+   this.setState({
+      persons:[
+      {
+        name: "Max",age:31
+      },
+      {
+        name: event.target.value,age:21
+      },
+      {
+        name: "Lucaay",age:23
+      },
+    ]
+  })
+  }
   render() {
     const a =4;
     return ( // This is gets compiled and is equivalent to the next return statement
@@ -50,7 +65,10 @@ class App extends Component {
      <Person 
      name={this.state.persons[0].name} age="31"/> {/* these names are hardcoded, we need to use state to make them more dynamic*/}
      <Person 
-     name="Alice" age="21" click={this.switchNameHandler.bind(this,"FirstWayToPassArguments")}> {/*You can send a reference to the method that updates the state to a component
+     name={this.state.persons[1].name} age="21" 
+     click={this.switchNameHandler.bind(this,"FirstWayToPassArguments")}
+     changed={this.nameChangedHandler}
+     > {/*You can send a reference to the method that updates the state to a component
      functional component so it can update the state,
     There are two ways of sending arguments to the even handler method: 
     1: using bind as above
@@ -59,7 +77,8 @@ class App extends Component {
 
      My Hobbies: Racing {a}</Person> 
      <Person 
-     name={this.state.persons[2].name} age="23"/>
+     name={this.state.persons[2].name} age="23"
+     changed={this.nameChangedHandler}/>
       </div>
     );
   // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi I\'m a React App!'))// Equivalent to this
