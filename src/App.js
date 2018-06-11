@@ -15,7 +15,8 @@ class App extends Component {
       {
         name: "Lucy",age:23
       },
-    ]
+    ],
+    showPersons:false
   }
 
   switchNameHandler = (newName)=>{ /*Good practice to call it handler to indicate that it is changed by an event handler*/
@@ -50,6 +51,12 @@ class App extends Component {
     ]
   })
   }
+
+togglePersonsHandler = ()=> {
+  const show = this.state.showPersons;
+this.setState({showPersons: !show});
+}
+
   render() {
     const a =4;
     const style = { // styling the hover state is hard using inline styles, one restriction of this method but good for scoping
@@ -67,11 +74,13 @@ class App extends Component {
      <h1>Hi, I'm a React App</h1>
      <button 
      style={style}
-     onClick={()=>this.switchNameHandler("SecondWayToPassArguments")}>Switch Name</button> {/*onClick with a capital C as its JSX, miniscule for HTML*/}
+    //  onClick={()=>this.switchNameHandler("SecondWayToPassArguments")}>Switch Name</button> {/*onClick with a capital C as its JSX, miniscule for HTML*/}
+    onClick={()=>this.togglePersonsHandler()}>Toggle Persons</button>
     {/*We can also send arguments to the event handler and there's two ways to do this:
       1: binding "this" and passing the argument. e.g  <button onClick={this.switchNameHandler.bind(this,"Name Based on this click")} />
       2: Arrow functions as shown above (this is conserved in arrow functions remember?) tends to be less efficient, use bind where possible
   */}
+  {this.state.showPersons&&<div> {/*We'll wrap these in a div so we can show/hide all the content with a click of a button (literally)*/}
      <Person 
      name={this.state.persons[0].name} age="31"/> {/* these names are hardcoded, we need to use state to make them more dynamic*/}
      <Person 
@@ -89,6 +98,7 @@ class App extends Component {
      <Person 
      name={this.state.persons[2].name} age="23"
      changed={this.nameChangedHandler}/>
+     </div>}
       </div>
     );
   // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi I\'m a React App!'))// Equivalent to this
