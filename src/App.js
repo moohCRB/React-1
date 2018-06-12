@@ -81,8 +81,12 @@ this.setState({showPersons: !show});
       2: Arrow functions as shown above (this is conserved in arrow functions remember?) tends to be less efficient, use bind where possible
   */}
   {this.state.showPersons&&<div> {/*We'll wrap these in a div so we can show/hide all the content with a click of a button (literally)*/}
+  {this.state.persons.map(person=> <Person name={person.name} age={person.age}/>)}
+  {false && 
+  <div>
+  {/* // these names are hardcoded, we need to use state to make them more dynamic */}
      <Person 
-     name={this.state.persons[0].name} age="31"/> {/* these names are hardcoded, we need to use state to make them more dynamic*/}
+     name={this.state.persons[0].name} age="31"/> 
      <Person 
      name={this.state.persons[1].name} age="21" 
      click={this.switchNameHandler.bind(this,"FirstWayToPassArguments")}
@@ -99,8 +103,8 @@ this.setState({showPersons: !show});
      name={this.state.persons[2].name} age="23"
      changed={this.nameChangedHandler}/>
      </div>}
-      </div>
-    );
+      </div>}
+      </div>)
   // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi I\'m a React App!'))// Equivalent to this
   // // takes at least 3 arguments, 
   // // first argument box type: component, div, h1, etc etc
@@ -109,8 +113,8 @@ this.setState({showPersons: !show});
   // // As we can see, using JSX can get quite ugly and its easier to use "HTML" Tags
   // // We see from the HTML that we have a className "App" that aligns the text to the center but it isn't being applied, the workaround is:
   // // 
-  }
 
-}
+
+}}
 
 export default App;
