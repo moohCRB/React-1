@@ -35,8 +35,10 @@ class App extends Component {
     ]
   })
   }
-deletePersonHandler = (personIndex)=>{ //this has a flaw
-  const persons = this.state.persons;
+deletePersonHandler = (personIndex)=>{ //this has a flaw. we are mutating data
+  const persons = this.state.persons.slice(); // slice copies the array OR
+  const copiedPersonsSpread = [...this.state.persons];
+
   persons.splice(personIndex,1);
   this.setState({persons:persons});
 }
