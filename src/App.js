@@ -71,8 +71,13 @@ this.setState({showPersons: !show});
       2: Arrow functions as shown above (this is conserved in arrow functions remember?) tends to be less efficient, use bind where possible
   */}
   {this.state.showPersons&&<div> {/*We'll wrap these in a div so we can show/hide all the content with a click of a button (literally)*/}
-  {this.state.persons.map((person,index)=> <Person click={()=>this.deletePersonHandler(index)} name={person.name} age={person.age} changed={this.nameChangedHandler}/>)}
-      {/* We use index so we can find out which index is in the array that way we can delete only the one we clicked on */}
+  {this.state.persons.map((person,index)=> <Person 
+  click={()=>this.deletePersonHandler(index)} 
+  name={person.name} 
+  age={person.age} 
+  key={index} // index is not a good idea (but it can work) as it can change if the array changes
+  changed={this.nameChangedHandler}/>)}
+  {/* We use index so we can find out which index is in the array that way we can delete only the one we clicked on */}
       </div>}
       
       </div>)
