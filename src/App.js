@@ -50,7 +50,8 @@ class App extends Component {
   render() {
     const style = { // styling the hover state is hard using inline styles, one restriction of this method but good for scoping
       // as it you decide which components use this style
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color:"white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
@@ -77,6 +78,7 @@ class App extends Component {
             key={person.id} // index is not a good idea (but it can work) as it can change if the array changes
             changed={(event) => this.nameChangedHandler(event, person.id)} />)}
           {/* We use index so we can find out which index is in the array that way we can delete only the one we clicked on */}
+        {style.backgroundColor="red"}
         </div>}
 
       </div>)
