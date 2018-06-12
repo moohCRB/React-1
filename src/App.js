@@ -19,23 +19,8 @@ class App extends Component {
     showPersons:false
   }
 
-  switchNameHandler = (newName)=>{ /*Good practice to call it handler to indicate that it is changed by an event handler*/
-  // this.state.persons[0].name="Bobilian"; // This is also a NO NO as it changes the state directly
-  this.setState({// Use this instead, a special method React gives you to update the state property and updates the DOM.
-    persons:[
-      {
-        name: newName,age:31
-      },
-      {
-        name: "Manuuuu",age:21
-      },
-      {
-        name: "Lucaay",age:23
-      },
-    ]
-  }) 
-  }
-  nameChangedHandler = (event)=>{
+  nameChangedHandler = (event,index)=>{
+    console.log(index)
    this.setState({
       persons:[
       {
@@ -50,6 +35,11 @@ class App extends Component {
     ]
   })
   }
+deletePersonHandler = (personIndex)=>{ //this has a flaw
+  const persons = this.state.persons;
+  persons.splice(personIndex,1);
+  this.setState({persons:persons});
+}
 
 togglePersonsHandler = ()=> {
   const show = this.state.showPersons;
@@ -79,8 +69,10 @@ this.setState({showPersons: !show});
       2: Arrow functions as shown above (this is conserved in arrow functions remember?) tends to be less efficient, use bind where possible
   */}
   {this.state.showPersons&&<div> {/*We'll wrap these in a div so we can show/hide all the content with a click of a button (literally)*/}
-  {this.state.persons.map(person=> <Person name={person.name} age={person.age}/>)}
+  {this.state.persons.map((person,index)=> <Person click={()=>this.deletePersonHandler(index)} name={person.name} age={person.age} changed={this.nameChangedHandler}/>)}
+      {/* We use index so we can find out which index is in the array that way we can delete only the one we clicked on */}
       </div>}
+      
       </div>)
   // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi I\'m a React App!'))// Equivalent to this
   // // takes at least 3 arguments, 
