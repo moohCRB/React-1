@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   switchNameHandler = (newName)=>{ /*Good practice to call it handler to indicate that it is changed by an event handler*/
-  // console.log("Was clicked!");
   // this.state.persons[0].name="Bobilian"; // This is also a NO NO as it changes the state directly
   this.setState({// Use this instead, a special method React gives you to update the state property and updates the DOM.
     persons:[
@@ -58,7 +57,6 @@ this.setState({showPersons: !show});
 }
 
   render() {
-    const a =4;
     const style = { // styling the hover state is hard using inline styles, one restriction of this method but good for scoping
       // as it you decide which components use this style
       backgroundColor: "white",
@@ -82,27 +80,6 @@ this.setState({showPersons: !show});
   */}
   {this.state.showPersons&&<div> {/*We'll wrap these in a div so we can show/hide all the content with a click of a button (literally)*/}
   {this.state.persons.map(person=> <Person name={person.name} age={person.age}/>)}
-  {false && 
-  <div>
-  {/* // these names are hardcoded, we need to use state to make them more dynamic */}
-     <Person 
-     name={this.state.persons[0].name} age="31"/> 
-     <Person 
-     name={this.state.persons[1].name} age="21" 
-     click={this.switchNameHandler.bind(this,"FirstWayToPassArguments")}
-     changed={this.nameChangedHandler}
-     > {/*You can send a reference to the method that updates the state to a component
-     functional component so it can update the state,
-    There are two ways of sending arguments to the even handler method: 
-    1: using bind as above
-    2: arrow functions as shown in the button onClick (less efficient use bind functions where possible)
-    */}
-
-     My Hobbies: Racing {a}</Person> 
-     <Person 
-     name={this.state.persons[2].name} age="23"
-     changed={this.nameChangedHandler}/>
-     </div>}
       </div>}
       </div>)
   // return React.createElement('div',{className:'App'},React.createElement('h1',null,'Hi I\'m a React App!'))// Equivalent to this
