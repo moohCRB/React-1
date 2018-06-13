@@ -65,7 +65,6 @@ if(this.state.persons.length<=2){
 if(this.state.persons.length<=1){
   classes.push('red');
 }
-console.log(this.state.persons.length,classes)
     return ( // This is gets compiled and is equivalent to the next return statement
 
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword. 
