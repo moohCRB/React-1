@@ -57,11 +57,20 @@ class App extends Component {
       padding: "8px",
       cursor: "pointer"
     }
+
+    const classes = [];
+if(this.state.persons.length<=2){
+  classes.push('bold');
+}
+if(this.state.persons.length<=1){
+  classes.push('red');
+}
     return ( // This is gets compiled and is equivalent to the next return statement
 
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword. 
       <div className="App">
         <h1>Hi, I'm a React App</h1>
+        <p className = {classes.join(' ')}> So far so good!</p>
         <button
           style={style}
           //  onClick={()=>this.switchNameHandler("SecondWayToPassArguments")}>Switch Name</button> {/*onClick with a capital C as its JSX, miniscule for HTML*/}
@@ -78,7 +87,7 @@ class App extends Component {
             key={person.id} // index is not a good idea (but it can work) as it can change if the array changes
             changed={(event) => this.nameChangedHandler(event, person.id)} />)}
           {/* We use index so we can find out which index is in the array that way we can delete only the one we clicked on */}
-        {style.backgroundColor="red"}
+          {style.backgroundColor="red"} {/* find out why the string "red" is also shown on the screen*/}
         </div>}
 
       </div>)
