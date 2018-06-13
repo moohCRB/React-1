@@ -12,6 +12,11 @@ Not all methods are executed during creating, only:
 Do: Set up State
 DON'T: Cause Side-Effects (like calling a website to change the state)
 After the constructor the next function will execute >>>
+e.g:
+constructor(props){
+    super(props) << very important, needs to be on the first line
+    this.state = {bob:"Marley"}
+}
 
 2) componentWillMount (React method,exists for historic reasons, unlikely we will use it).
 Do: Update State, last minute Optimization
