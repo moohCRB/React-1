@@ -1,11 +1,12 @@
 import React from "react";
 
 const style = {
-    border: "1px solid black",
-    padding: "8px",
-    cursor: "pointer",
-    "margin-left":"-3rem"
-}
+  border: "none",
+  padding: "8px",
+  cursor: "pointer",
+  "margin-left": "-2.1rem",
+  margin: "16px"
+};
 const restart = props => {
   return (
     <button onClick={props.onClick} style={style}>
@@ -13,4 +14,4 @@ const restart = props => {
     </button>
   );
 };
-export default restart
+export default restart;
