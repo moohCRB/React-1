@@ -1,0 +1,29 @@
+Stateful components are the only components that have access to lifestyle hooks.
+
+lifestyle Hooks:
+constructor()                   componentWillMount()
+componentWillReceiveProps()     shouldComponentUpdate()
+componentWillUpdate()           componentDidUpdate()
+componentDidCatch()             componentDidMount()
+componentWillUnmount()          render()
+
+Not all methods are executed during creating, only: 
+1) constructor (ES6 class Feature, not React)
+Do: Set up State
+DON'T: Cause Side-Effects (like calling a website to change the state)
+After the constructor the next function will execute >>>
+
+2) componentWillMount (React method,exists for historic reasons, unlikely we will use it).
+Do: Update State, last minute Optimization
+Don't: Cause Side-Effects
+After the componentWillMount, the next function will execute >>>
+
+3) Render (doesn't access the real DOM)
+Defines how the component will look like from a HTML perspective. Compares the 
+virtual DOM and the real DOM and will only update the changes.
+It will then Render all Child Components within the components.
+After this, the next method will be executed...
+
+4) componentDidMount checks that everything was assembled correctrly
+Do: Cause Side-Effects
+Don't: Update State (triggers re-render)
