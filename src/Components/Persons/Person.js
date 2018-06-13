@@ -5,7 +5,7 @@
 // There's two ways to style components:
 // 
 import React from 'react';
-import './Person.css'; // file extension must be included... file extensions can only be omitted for JS files
+import './Person/Person.css'; // file extension must be included... file extensions can only be omitted for JS files
 
 
 const person = (props) => { 

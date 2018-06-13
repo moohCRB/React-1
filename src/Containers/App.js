@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from "./Person/Person"; // this has to be imported as an uppercase for it to be rendered.
+import Person from "../Components/Persons/Person"; // this has to be imported as an uppercase for it to be rendered.
 
 class App extends Component {
   // What we're about to do can be only with classes that EXTENDS components
