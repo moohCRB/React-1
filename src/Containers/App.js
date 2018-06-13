@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Person from "../Components/Persons/Person"; // this has to be imported as an uppercase for it to be rendered.
 import RestartButton from "../Components/RestartButton";
+import EIButton from "../Components/InputButton";
 
 class App extends Component {
   // What we're about to do can be only with classes that EXTENDS components
@@ -23,7 +24,8 @@ class App extends Component {
         age: 23
       }
     ],
-    showPersons: false
+    showPersons: false,
+    enableInput: false
   };
 
   nameChangedHandler = (event, index) => {
@@ -77,6 +79,11 @@ class App extends Component {
     });
   };
 
+  enableInputHandler=()=>{
+  const input = this.state.enableInput;
+  this.setState({ enableInput: !input });
+}
+
   render() {
     const style = {
       // styling the hover state is hard using inline styles, one restriction of this method but good for scoping
@@ -86,7 +93,7 @@ class App extends Component {
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
-      cursor: "pointer"
+      cursor: "pointer",
     };
 
     const classes = [];
@@ -125,12 +132,14 @@ class App extends Component {
                 age={person.age}
                 key={person.id} // index is not a good idea (but it can work) as it can change if the array changes
                 changed={event => this.nameChangedHandler(event, person.id)}
+                enableInput = {this.state.enableInput}
               />
             ))}
             {/* We use index so we can find out which index is in the array that way we can delete only the one we clicked on */}
             {(style.backgroundColor = "red")}{" "}
             {/* find out why the string "red" is also shown on the screen*/}
             <RestartButton onClick={() => this.restartPersonsHandler()} />
+            <EIButton onClick={()=>this.enableInputHandler()} />
           </div>
         )}
       </div>
