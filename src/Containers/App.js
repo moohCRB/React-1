@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component,PureComponent } from "react";
+// PureComponent has the logic of shouldComponentUpdate already built-in
 import "./App.css";
 import Person from "../Components/Persons/Person"; // this has to be imported as an uppercase for it to be rendered.
 import RestartButton from "../Components/RestartButton";
@@ -100,6 +101,12 @@ console.log('[App.js] Inside Constructor()', props)
   const input = this.state.enableInput;
   this.setState({ enableInput: !input });
 }
+// shouldComponentUpdate(nextProps,nextState){ // Rather than use this logic, we can import from PureComponent
+//   return nextState.persons !== this.state.persons || 
+//   nextState.showPersons!==this.state.showPersons ||
+//   nextState.enableInput !== this.state.enableInput ;
+// // return true
+// }
 
   render() { // this is the only mandatory method, React needs to know what to render
     console.log('[App.js] Inside Render()')
@@ -127,6 +134,7 @@ console.log('[App.js] Inside Constructor()', props)
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword.
       <div className="App">
         <h1>Hi, I'm a React App</h1>
+        <button onClick={()=>{this.setState({showPersons:true})}}>Show Persons</button>
         <p className={classes.join(" ")}> So far so good!</p>
         <button
           style={style}
