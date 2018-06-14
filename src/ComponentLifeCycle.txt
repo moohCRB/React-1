@@ -33,7 +33,7 @@ After this, the next method will be executed...
 Do: Cause Side-Effects
 Don't: Update State (triggers re-render)
 
-The methods that are executed during an update (triggered by a Parent):
+The methods that are executed during an update (triggered by a Parent/external update):
 
 1) componentWillReceiveProps(nextProps)
 Do: Set up/Sync State
@@ -62,3 +62,21 @@ Don't: Change the state as it will acause a re-render
 
 You might turn your stateless component into a stateful component if it receives a lot of props
 but only depends on 1 to change its state 
+
+The methods that are executed during an INTERNAL update:
+
+1) shouldComponentUpdate(nextProps,nextState) as we aren't receiving props, this will be the first method that is run
+Do: Sync/Set up state (better place than componentWillReceiveProps) because here you KNOW you will continue with the updating
+Don't: Cause side-effects 
+If you use this method effectively you can save a lot of performace.. 
+
+2) componentWillUpdate(nextProps,nextState)... only if shouldComponentUpdate() returned true
+Do: Sync/Set up state (better place than componentWillReceiveProps) because here you KNOW you will continue with the updating
+Don't: Cause side-effects 
+If you use this method effectively you can save a lot of performace.. 
+
+3) Render again
+5) Update Child Components Props
+6) componentDidUpdate()
+Do: Cause Side-Effects
+Don't: Change the state as it will acause a re-render
