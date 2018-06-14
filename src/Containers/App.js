@@ -6,6 +6,23 @@ import EIButton from "../Components/InputButton";
 
 class App extends Component {
   // What we're about to do can be only with classes that EXTENDS components
+  constructor(props){ // this receives the props this component gets
+super(props) // without this, the props is ONLY in the constructor scope as props.xtz ; now it is accesible throughout the component
+// now we can use props.xyz
+console.log('[App.js] Inside Constructor()', props)
+// We could initialise the state in this method
+// this.state = {
+  // bob:"Marley"
+}
+  
+  
+  componentWillMount() {
+    console.log('[App.js] Inside componentWillMount()')
+  }
+  componentDidMount(){
+    console.log('[App.js] Inside componentDidMount()')
+
+  }
   state = {
     persons: [
       {
@@ -84,7 +101,8 @@ class App extends Component {
   this.setState({ enableInput: !input });
 }
 
-  render() {
+  render() { // this is the only mandatory method, React needs to know what to render
+    console.log('[App.js] Inside Render()')
     const style = {
       // styling the hover state is hard using inline styles, one restriction of this method but good for scoping
       // as it you decide which components use this style
