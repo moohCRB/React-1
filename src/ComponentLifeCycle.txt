@@ -8,7 +8,7 @@ componentDidCatch()             componentDidMount()
 componentWillUnmount()          render()
 
 Not all methods are executed during creating, only: 
-1) constructor (ES6 class Feature, not React)
+1) constructor() (ES6 class Feature, not React)
 Do: Set up State
 DON'T: Cause Side-Effects (like calling a website to change the state)
 After the constructor the next function will execute >>>
@@ -18,17 +18,43 @@ constructor(props){
     this.state = {bob:"Marley"}
 }
 
-2) componentWillMount (React method,exists for historic reasons, unlikely we will use it).
+2) componentWillMount() (React method,exists for historic reasons, unlikely we will use it).
 Do: Update State, last minute Optimization
 Don't: Cause Side-Effects
 After the componentWillMount, the next function will execute >>>
 
-3) Render (doesn't access the real DOM)
+3) Render() (doesn't access the real DOM)
 Defines how the component will look like from a HTML perspective. Compares the 
 virtual DOM and the real DOM and will only update the changes.
 It will then Render all Child Components within the components.
 After this, the next method will be executed...
 
-4) componentDidMount checks that everything was assembled correctrly
+4) componentDidMount() checks that everything was assembled correctrly
 Do: Cause Side-Effects
 Don't: Update State (triggers re-render)
+
+The methods that are executed during an update (triggered by a Parent):
+
+1) componentWillReceiveProps(nextProps)
+Do: Set up/Sync State
+Don't: Cause Side-Effects
+
+One thing we can do in this method is synchronize our local state of the component
+to the props. Initialise the state with the props.
+
+2) shouldComponentUpdate(nextProps,nextState) this method may cancel the updating process
+If you return true, the updating continues. If you return false, the updating stops.
+No other method you return anything, here true/false. If you return false, its more efficient
+obviously as nothing needs to get updated.
+Do: Decide whether to continue or not.
+Don't Cause Side-Effects
+
+3) componentWillUpdate(nextProps,nextState)... only if shouldComponentUpdate() returned true
+Do: Sync/Set up state (better place than componentWillReceiveProps) because here you KNOW you will continue with the updating
+Don't: Cause side-effects 
+
+4) Render() again
+5) Update Child Components Props
+6) componentDidUpdate()
+Do: Cause Side-Effects
+Don't: Change the state as it will acause a re-render
