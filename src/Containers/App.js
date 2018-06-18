@@ -43,7 +43,8 @@ console.log('[App.js] Inside Constructor()', props)
       }
     ],
     showPersons: false,
-    enableInput: false
+    enableInput: false,
+    toggleClicked: 0
   };
 
   nameChangedHandler = (event, index) => {
@@ -72,7 +73,13 @@ console.log('[App.js] Inside Constructor()', props)
 
   togglePersonsHandler = () => {
     const show = this.state.showPersons;
-    this.setState({ showPersons: !show });
+    this.setState((prevState,props)=>{ // User an arrow function that takes the prevState which can then be mutated
+      return{  showPersons: !show,
+        // toggleClicked: this.state.toggleClicked +1 // even though this works, it might not always give the correct 
+        // // output as setState is an ASYNCHRONOUS METHOD done by react
+        toggleClicked:prevState.toggleClicked+1
+  } 
+    });
   };
 
   restartPersonsHandler = () => {
