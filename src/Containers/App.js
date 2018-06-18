@@ -39,7 +39,7 @@ console.log('[App.js] Inside Constructor()', props)
       {
         id: "3",
         name: "Lucy",
-        age: 23
+        age: "23"
       }
     ],
     showPersons: false,

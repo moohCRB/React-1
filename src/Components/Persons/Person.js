@@ -5,6 +5,7 @@
 // There's two ways to style components:
 // 
 import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import './Person/Person.css'; // file extension must be included... file extensions can only be omitted for JS files
 
 
@@ -59,5 +60,11 @@ return true
     }
 }
     
+Person.propTypes = {
+    click: PropTypes.func,
+    name: PropTypes.string,
+    age: PropTypes.number,
+    changed: PropTypes.func 
+}
 
 export default Person;
