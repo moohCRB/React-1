@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-plugin-emotion": "^9.2.0",
+    "emotion": "^9.2.3",
     "prop-types": "^15.6.1",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
+    "react-emotion": "^9.2.3",
     "react-scripts": "1.1.4"
   },
   "scripts": {
