@@ -19,7 +19,7 @@ class Person extends Component {
   // bob:"Marley"
     }
   
-  componentWillMount() {
+  componentWillMount() { /// try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there)
     console.log('[Person.js] Inside componentWillMount()')
   }
   componentDidMount(){
@@ -27,7 +27,7 @@ class Person extends Component {
    {this.props.enableInput&&  this.inputElement.current.focus()} // focus method not working? should make input text blue to highlight where you are
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps){ // try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there)
       console.log('[UPDATE Person.js ] Inside componentWillReceiveProps', nextProps)
   }
 
@@ -37,7 +37,7 @@ class Person extends Component {
 return true
   }
 
-  componentWillUpdate(nextProps,nextState){
+  componentWillUpdate(nextProps,nextState){ // try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there)
     console.log('[UPDATE Person.js ] Inside componentWillUpdate', nextProps)
   }
 

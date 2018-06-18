@@ -17,7 +17,7 @@ console.log('[App.js] Inside Constructor()', props)
 }
   
   
-  componentWillMount() {
+  componentWillMount() { // try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there)
     console.log('[App.js] Inside componentWillMount()')
   }
   componentDidMount(){
