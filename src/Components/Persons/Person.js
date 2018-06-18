@@ -13,6 +13,7 @@ class Person extends Component {
     constructor(props){
         super(props);
     console.log('[Person.js] Inside Constructor()', props)
+    this.inputElement= React.createRef();
 // We could initialise the state in this method
 // this.state = {
   // bob:"Marley"
@@ -23,7 +24,7 @@ class Person extends Component {
   }
   componentDidMount(){
     console.log('[Person.js] Inside componentDidMount()')
-
+   {this.props.enableInput&&  this.inputElement.current.focus()} // focus method not working? should make input text blue to highlight where you are
   }
 
   componentWillReceiveProps(nextProps){
@@ -53,7 +54,14 @@ return true
                 <p onClick={this.props.click}>My name is {this.props.name} and I am {this.props.age} years old!</p>
                 {/* Children are a special property given to us by react which is the text in between the <> </> tags that are passed into this component */}
                <p> {this.props.children}</p> 
-            {this.props.enableInput&& <input type="text" onChange={this.props.changed} value={this.props.name}/>} {/*two way binding*/}
+            {this.props.enableInput&& 
+            <input 
+            // this is only available in stateful classes, inputElement will be a new property on the class, created when render runs
+            // ref = {(inp)=>{this.inputElement = inp}} // this focuses the current inputBox, ref special property known to react which should take a function
+         ref={this.inputElement}
+            type="text" 
+            onChange={this.props.changed} 
+            value={this.props.name}/>} {/*two way binding*/}
                {/*onChange will be fired whenever the value of the input changes*/}
                 </div>
             )
