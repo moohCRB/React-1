@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import styled from "react-emotion";
 import PropTypes from 'prop-types';
 
@@ -11,46 +11,51 @@ const BreadBottom = styled("div")`
   margin: 2% auto;
 `;
 
-const BurgerIngredient = props => {
-  let ingredient = null;
+class BurgerIngredient extends Component { // class to access propTypes
+    render(){
+        let ingredient = null;
 
-  switch (props.type) {
-    case "bread-bottom":
-      ingredient = <BreadBottom />;
-      break;
-    case "bread-top":
-      ingredient = (
-        <BreadTop>
-          <Seed1 />
-          <Seed2 />
-        </BreadTop>
-      );
-      break;
+        switch (this.props.type) { // access props in class using this
+          case "bread-bottom":
+            ingredient = <BreadBottom />;
+            break;
+          case "bread-top":
+            ingredient = (
+              <BreadTop>
+                <Seed1 />
+                <Seed2 />
+              </BreadTop>
+            );
+            break;
+      
+          case "meat":
+            ingredient = <Meat/>;
+            break;
+      
+          case "cheese":
+          ingredient = <Cheese/>;
+          break;
+      
+          case "lamb":
+            ingredient = <Lamb/>;
+            break;
+      
+          case "salad":
+          ingredient = <Salad/>;
+          break;
+      
+          default:
+            ingredient=null;
+        }
+        return ingredient;
+    }
+}
+ 
 
-    case "meat":
-      ingredient = <Meat/>;
-      break;
 
-    case "cheese":
-    ingredient = <Cheese/>;
-    break;
-
-    case "lamb":
-      ingredient = <Lamb/>;
-      break;
-
-    case "salad":
-    ingredient = <Salad/>;
-    break;
-
-    default:
-      ingredient=null;
-  }
-  return ingredient;
-};
-
-burgerIngredient.propTypes={
-    
+BurgerIngredient.propTypes={
+    type: PropTypes.string.isRequired
 }
 
-export default burgerIngredient;
+
+export default BurgerIngredient;
