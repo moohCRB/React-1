@@ -6,7 +6,7 @@ import BurgerIngredient from "./BurgerIngredients/BurgerIngredients";
 const Burger = styled("div")`
   width: 100%;
   margin: auto;
-  height: 250px;
+  height: 500px;
   overflow: scroll;
   text-align: center;
   font-weight: bold;
