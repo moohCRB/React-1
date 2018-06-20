@@ -15,10 +15,10 @@ const Burger = styled("div")`
 
 const burger = props => {
   return (
-    <Burger >
+    <Burger className={"Burger"}>
        <BurgerIngredient type="bread-top" />
-      {/* <BurgerIngredient type="cheese" />
-      <BurgerIngredient type="meat" /> */}
+      <BurgerIngredient type="cheese" />
+      <BurgerIngredient type="meat" />
 
       <BurgerIngredient type="bread-bottom" />
     </Burger>
