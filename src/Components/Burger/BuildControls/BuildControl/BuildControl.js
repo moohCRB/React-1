@@ -23,8 +23,8 @@ const BuildControl = styled("div")`
 const buildControl = props => (
   <BuildControl>
     <div className = "Label">{props.label}</div>
-    <button className="Less">Less</button>
-    <button className="More">More</button>
+    <button className="Less" onClick={props.removed} disabled={props.disabled}>Less</button> {/*disabling not working for some reason*/}
+    <button className="More" onClick={props.added}>More</button>
   </BuildControl>
 );
 
