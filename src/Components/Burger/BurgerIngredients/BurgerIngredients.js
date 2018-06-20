@@ -33,6 +33,21 @@ transform: rotate(20deg);
 box-shadow: inset -2px -3px #c9c9c9;
 `;
 
+const Meat = styled("div")`
+width: 80%;
+height: 8%;
+background: linear-gradient(#7f3608,#702e05);
+margin: 2% auto;
+border-radius: 15px;
+`;
+
+const Cheese = styled("div")`
+width:90%;
+height: 8%;
+margin: 2% auto;
+baackground: linear-gradient(#BDB76B,#FFFF00);
+border-radius: 20px;
+`;
 
 class BurgerIngredient extends Component { // class to access propTypes
     render(){
@@ -50,13 +65,13 @@ class BurgerIngredient extends Component { // class to access propTypes
             );
             break;
       
-        //   case "meat":
-        //     ingredient = <Meat/>;
-        //     break;
+          case "meat":
+            ingredient = <Meat/>;
+            break;
       
-        //   case "cheese":
-        //   ingredient = <Cheese/>;
-        //   break;
+          case "cheese":
+          ingredient = <Cheese/>;
+          break;
       
         //   case "lamb":
         //     ingredient = <Lamb/>;
