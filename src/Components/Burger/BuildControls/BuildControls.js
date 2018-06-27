@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "react-emotion";
 import BuildControl from "./BuildControl/BuildControl";
+import classes from "./BuildControls.css"
 
 const BuildControls = styled("div")`
 width: 100%;
@@ -32,6 +33,10 @@ const buildControls = (props) => (
     disabled={props.disabled[ctrl.type]}
     />
 ))}
+<button 
+className={classes.OrderButton}
+disabled={!props.purchaseable}>
+ORDER NOW</button>
     </BuildControls>
 );
 
