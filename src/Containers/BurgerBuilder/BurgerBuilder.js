@@ -68,6 +68,9 @@ this.setState({purchasable:sum>0})
     this.setState({ totalPrice: newPrice, ingredients: updatedIngredients });
     this.updatePurchaseState(updatedIngredients);
   };
+purchaseCancelHandler = ()=>{
+  this.setState({purchasing:false});
+}
 
   render() {
       const disabledInfo = {
@@ -78,7 +81,7 @@ this.setState({purchasable:sum>0})
       }
     return (
       <Aux>
-        <Modal show={this.state.purchasing}> {/*There's somme animation already present defined in the css file*/}
+        <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}> {/*There's somme animation already present defined in the css file*/}
           <OrderSummary ingredients={this.state.ingredients}/>
           </Modal>
         <Burger ingredients={this.state.ingredients} />
