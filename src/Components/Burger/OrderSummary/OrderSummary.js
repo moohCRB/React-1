@@ -1,5 +1,6 @@
 import React from "react";
 import Aux from "../../../hoc/Aux";
+import Button from "../../UI/Button/Button";
 
 const orderSummary = props => {
   //transform the ingredients object to an array
@@ -18,6 +19,8 @@ const orderSummary = props => {
       <p> A delicious burger wit hthe following ingredients:</p>
       <ul>{ingredientSummary}</ul>
       <p>Continue to Checkout?</p>
+      <Button clicked={props.danger} btnType={"Danger"}>Cancel</Button>
+      <Button clicked={props.success} btnType={"Success"}>Continue</Button>
     </Aux>
   );
 };
