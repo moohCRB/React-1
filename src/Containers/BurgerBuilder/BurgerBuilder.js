@@ -21,8 +21,13 @@ class BurgerBuilder extends Component {
       meat: 0
     },
     totalPrice: 3,
-    purchasable: false
+    purchasable: false,
+    purchasing: false
   };
+
+purchaseHandler = () =>{
+  this.setState({purchasing:true});
+}
 
   updatePurchaseState =(ingredients)=> {
   
@@ -73,7 +78,7 @@ this.setState({purchasable:sum>0})
       }
     return (
       <Aux>
-        <Modal>
+        <Modal show={this.state.purchasing}> {/*There's somme animation already present defined in the css file*/}
           <OrderSummary ingredients={this.state.ingredients}/>
           </Modal>
         <Burger ingredients={this.state.ingredients} />
@@ -83,6 +88,7 @@ this.setState({purchasable:sum>0})
           disabled={disabledInfo}
           price={this.state.totalPrice}
           purchaseable={this.state.purchasable}
+          ordered={this.purchaseHandler}
         />
       </Aux>
     );
