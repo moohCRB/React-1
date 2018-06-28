@@ -84,7 +84,7 @@ alert("You continue!")
     return (
       <Aux>
         <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}> {/*There's somme animation already present defined in the css file*/}
-          <OrderSummary ingredients={this.state.ingredients} success={this.purchaseContinueHandler} danger={this.purchaseCancelHandler}/>
+          <OrderSummary ingredients={this.state.ingredients} success={this.purchaseContinueHandler} danger={this.purchaseCancelHandler} price={this.state.totalPrice}/>
           </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
