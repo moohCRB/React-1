@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./Toolbar.css"
-import Logo from "../../Logo/Logo";
 import {IconKebab} from "../../assets";
 import NavigationItems from "../NavigationItems/NavigationItems";
 
