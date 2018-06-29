@@ -4,6 +4,12 @@ import Aux from "../../../hoc/Aux";
 import Backdrop from "../Backdrop/backdrop";
 
 const modal = props => (
+// This should be a class component as it unnecessarily
+// gets render every time even though the modal is not 
+// being used. Use this method for optimisation:
+// shouldComponentUpdate(nextProps,nextState){
+// return nextProps.show !== this.props.show
+// }
     <Aux>
         <Backdrop show={props.show} clicked={props.modalClosed}/>
   <div
