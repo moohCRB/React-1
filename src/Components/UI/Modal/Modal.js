@@ -10,8 +10,6 @@ const modal = props => (
 // shouldComponentUpdate(nextProps,nextState){
 // return nextProps.show !== this.props.show
 // }
-
-
     <Aux>
         <Backdrop show={props.show} clicked={props.modalClosed}/>
   <div
