@@ -10,6 +10,12 @@ const modal = props => (
 // shouldComponentUpdate(nextProps,nextState){
 // return nextProps.show !== this.props.show
 // }
+// If you have a spinner in place this won't work, you'll have to do:
+// shouldComponentUpdate(nextProps,nextState){
+  // return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
+  // }
+
+
     <Aux>
         <Backdrop show={props.show} clicked={props.modalClosed}/>
   <div
