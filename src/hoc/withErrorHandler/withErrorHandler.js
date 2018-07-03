@@ -10,6 +10,8 @@ const withErrorHandler = (WrappedComponent, axios) => {
       error: null
     };
 
+    // componentDidMount renders once all children are rendered, if theres an error
+    // we wont get the appropriate error handling, the fix is to use componentWillMount
     componentDidMount() {
       axios.interceptors.request.use(req => {
         this.setState({ error: null });
@@ -19,6 +21,22 @@ const withErrorHandler = (WrappedComponent, axios) => {
         this.setState({ error: error });
       });
     }
+
+
+//     componentWillMount() {
+//         this.reqInterceptor = axios.interceptors.request.use(req => {
+//           this.setState({ error: null });
+//           return req
+//         });
+//         this.resInterceptor = axios.interceptors.response.use(res=> res, error => {
+//           this.setState({ error: error });
+//         });
+//       }
+
+//     componentWillUnmount (){
+// axios.interceptors.request.eject(this.reqInterceptor);
+// axios.interceptors.response.eject(this.resInterceptor);
+//     }
 
     errorConfirmedHandler = () => {
       this.setState({ error: null });
