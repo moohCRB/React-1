@@ -2,6 +2,7 @@ import React, { Component } from "react";
 // import styled, { css } from "react-emotion";
 import Layout from "../Components/Layout/Layout";
 import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
+import Checkout from "./Checkout/Checkout";
 
 // const Header = styled("div")`
 //   width: 100%;
@@ -21,12 +22,15 @@ import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 //     justify-content: space-between;
 // `;
 
+
+
 class App extends Component {
   render() {
     return (
       <div>
         <Layout>
          <BurgerBuilder />
+         <Checkout />
         </Layout>
       </div>
     );
