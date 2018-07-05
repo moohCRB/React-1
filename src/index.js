@@ -30,5 +30,5 @@ import AppPosts from "./Containers/App_Posts";
 // })
 
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppPosts />, document.getElementById('root'));
 registerServiceWorker();
