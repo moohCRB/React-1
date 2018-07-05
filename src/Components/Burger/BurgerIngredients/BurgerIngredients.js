@@ -42,12 +42,30 @@ border-radius: 15px;
 `;
 
 const Cheese = styled("div")`
-width:90%;
-height: 8%;
+width: 85%;
+height: 3%;
+background: linear-gradient(#BDB76B,#FFFF00);
 margin: 2% auto;
-baackground: linear-gradient(#BDB76B,#FFFF00);
-border-radius: 20px;
+border-radius: 5px;
 `;
+
+
+const Lamb = styled("div")`
+width: 80%;
+height: 5%;
+background: linear-gradient(#7f3608,#FF545E);
+margin: 2% auto;
+border-radius: 15px;
+`;
+
+const Salad = styled("div")`
+width: 80%;
+height: 2%;
+background: linear-gradient(#58db24,#6de53c);
+margin: 2% auto;
+border-radius: 15px;
+`;
+
 
 class BurgerIngredient extends Component { // class to access propTypes
     render(){
@@ -73,13 +91,13 @@ class BurgerIngredient extends Component { // class to access propTypes
           ingredient = <Cheese/>;
           break;
       
-        //   case "lamb":
-        //     ingredient = <Lamb/>;
-        //     break;
+          case "lamb":
+            ingredient = <Lamb/>;
+            break;
       
-        //   case "salad":
-        //   ingredient = <Salad/>;
-        //   break;
+          case "salad":
+          ingredient = <Salad/>;
+          break;
       
           default:
             ingredient=null;
