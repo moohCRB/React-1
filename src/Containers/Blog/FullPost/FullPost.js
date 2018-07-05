@@ -6,11 +6,13 @@ state={
     loadedPost:null
 }
 
-    componentDidUpdate(){
-        if(this.props.id){
+    componentDidMount(){
+        console.log(this.props)
+        // taken from the url
+        if(this.props.match.params.id){
             //infinite loop without the next if statement
-            if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !==this.props.id)){ 
-                axios.get("https://jsonplaceholder.typicode.com/posts/"+this.props.id)
+            if (!this.state.loadedPost || (this.state.loadedPost && this.state.loadedPost.id !==this.props.match.params.id)){ 
+                axios.get("https://jsonplaceholder.typicode.com/posts/"+this.props.match.params.id)
             .then(response=>{
                 // console.log(response);
                 this.setState({loadedPost: response.data})
@@ -21,7 +23,7 @@ state={
     }
 
     deletePostHandler=()=>{
-axios.delete("https://jsonplaceholder.typicode.com/posts/"+this.props.id)
+axios.delete("https://jsonplaceholder.typicode.com/posts/"+this.props.match.params.id)
 .then(response => {
     console.log(response);
 });
@@ -29,7 +31,7 @@ axios.delete("https://jsonplaceholder.typicode.com/posts/"+this.props.id)
   render() {
     let post = <p style={{ textAlign: "center" }}> Please select a Post! </p>;
    
-   if(this.props.id){
+   if(this.props.match.params.id){
     post = <p style={{ textAlign: "center" }}> Loading..! </p>;
    }
     if (this.state.loadedPost) {
