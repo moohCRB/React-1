@@ -8,3 +8,5 @@ POSTS:
  - Different methods of re-directing
 
  
+ Burger Builder:
+ - Fix withErrorHandler HOC
