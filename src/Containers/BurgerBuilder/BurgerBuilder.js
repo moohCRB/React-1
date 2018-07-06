@@ -79,28 +79,40 @@ this.setState({ingredients:response.data})
     this.setState({ purchasing: false });
   };
   purchaseContinueHandler = () => {
-    this.setState({ loading: true });
+    // this.setState({ loading: true });
 
-    // alert("You continue!")
-    // you need to use .json for appropriate endpoint in firebase
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      customer: {
-        name: "Ibrahim",
-        address: {
-          street: "TestStreet 1",
-          zipCode: "41351",
-          country: "UK"
-        },
-        email: "kirk@test.com"
-      },
-      deliveryMethod: "drone"
-    };
-    axios
-      .post("/orders.json", order)
-      .then(response => this.setState({ loading: false, purchasing: false }))
-      .catch(error => this.setState({ loading: false, purchasing: false }));
+    // // alert("You continue!")
+    // // you need to use .json for appropriate endpoint in firebase
+    // const order = {
+    //   ingredients: this.state.ingredients,
+    //   price: this.state.totalPrice,
+    //   customer: {
+    //     name: "Ibrahim",
+    //     address: {
+    //       street: "TestStreet 1",
+    //       zipCode: "41351",
+    //       country: "UK"
+    //     },
+    //     email: "kirk@test.com"
+    //   },
+    //   deliveryMethod: "drone"
+    // };
+    // axios
+    //   .post("/orders.json", order)
+    //   .then(response => this.setState({ loading: false, purchasing: false }))
+    //   .catch(error => this.setState({ loading: false, purchasing: false }));
+  
+    // this.props.history.push("/checkout");
+   const queryParams = [];
+   for(let i in this.state.ingredients){
+     // JS method
+     queryParams.push(encodeURIComponent(i)+"="+encodeURIComponent(this.state.ingredients[i])); 
+   }
+   const queryString = queryParams.join("&");
+    this.props.history.push({
+      pathname: '/checkout',
+      search: '?' + queryString
+    })
   };
   render() {
     const disabledInfo = {
