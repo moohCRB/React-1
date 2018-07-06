@@ -25,7 +25,7 @@ class BurgerBuilder extends Component {
   };
 
   componentDidMount(){
-    axios.get("https://react-my-burger-85e1b.firebaseio.com/orders/ingredients.json")
+    axios.get("https://react-my-burger-85e1b.firebaseio.com/ingredients.json")
     .then(response=>{
 this.setState({ingredients:response.data})
     })
@@ -108,6 +108,8 @@ this.setState({ingredients:response.data})
      // JS method
      queryParams.push(encodeURIComponent(i)+"="+encodeURIComponent(this.state.ingredients[i])); 
    }
+
+   queryParams.push('price=' + this.state.totalPrice);
    const queryString = queryParams.join("&");
     this.props.history.push({
       pathname: '/checkout',
