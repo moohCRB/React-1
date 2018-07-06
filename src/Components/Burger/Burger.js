@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "react-emotion";
+import {withRouter} from "react-router-dom"; // this gives children component access to the routing props
+
 import "./Burger.css";
 import BurgerIngredient from "./BurgerIngredients/BurgerIngredients";
 
@@ -14,6 +16,7 @@ const Burger = styled("div")`
 `;
 
 const burger = props => {
+   
     let transformedIngredients = Object.keys(props.ingredients).map(igKey=>{
         return [...Array(props.ingredients[igKey])].map((_,i)=>{
            return <BurgerIngredient key={igKey + i} type = {igKey} />
@@ -35,4 +38,7 @@ if (transformedIngredients.length===0){
   );
 };
 
-export default burger;
+export default withRouter(burger);
+// The routing is only available in the parent compoenent, its children
+// (including this component does NOT have access to it), Hence why we wrap 
+// with "withRouter"

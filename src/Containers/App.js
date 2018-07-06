@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import {BrowserRouter,Route,Switch} from "react-router-dom";
 // import styled, { css } from "react-emotion";
 import Layout from "../Components/Layout/Layout";
 import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 import Checkout from "./Checkout/Checkout";
+
 
 // const Header = styled("div")`
 //   width: 100%;
@@ -27,12 +29,16 @@ import Checkout from "./Checkout/Checkout";
 class App extends Component {
   render() {
     return (
+      <BrowserRouter>
       <div>
         <Layout>
-         <BurgerBuilder />
-         <Checkout />
+         <Switch>
+          <Route path="/checkout" component={Checkout} />
+          <Route path="/" exact component={BurgerBuilder} />
+          </Switch>
         </Layout>
       </div>
+      </BrowserRouter>
     );
   }
 }
