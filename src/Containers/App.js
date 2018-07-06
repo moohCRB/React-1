@@ -4,7 +4,7 @@ import {BrowserRouter,Route,Switch} from "react-router-dom";
 import Layout from "../Components/Layout/Layout";
 import BurgerBuilder from "./BurgerBuilder/BurgerBuilder";
 import Checkout from "./Checkout/Checkout";
-
+import Orders from "../Containers/Orders/Orders";
 
 // const Header = styled("div")`
 //   width: 100%;
@@ -34,6 +34,7 @@ class App extends Component {
         <Layout>
          <Switch>
           <Route path="/checkout" component={Checkout} />
+          <Route path="/orders" exact component={Orders} />
           <Route path="/" exact component={BurgerBuilder} />
           </Switch>
         </Layout>
