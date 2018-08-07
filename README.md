@@ -2,23 +2,23 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## A site to build burgers and buy them using React and Redux.
 
-Building components in different way.
-How a React application is generally built.
-Rendering content conditionally.
-Debugging.
-Styling components.
-LifeCycle hooks.
-HTTP requests to fetch and post to a backend using axios.
-Routing.
-Forms & validation dynamically.
-Redux.
-Authentication.
-Testing React Applications.
-Deploying the React application to a server.
-Animating the React application.
+Building components in different way. <br>
+How a React application is generally built.<br>
+Rendering content conditionally.<br>
+Debugging.<br>
+Styling components.<br>
+LifeCycle hooks.<br>
+HTTP requests to fetch and post to a backend using axios.<br>
+Routing.<br>
+Forms & validation dynamically.<br>
+Redux.<br>
+Authentication.<br>
+Testing React Applications.<br>
+Deploying the React application to a server.<br>
+Animating the React application.<br>
 
-To view the project, check into the React folder and run:
-**Using Yarn:**
-* `yarn start`
-**Using npm:**
-*`npm start`
+To view the project, check into the React folder and run:<br>
+**Using Yarn:**<br>
+
+- `yarn start`
+  **Using npm:** \*`npm start`
