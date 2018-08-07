@@ -16,3 +16,9 @@ Once installed you will now create your project name using:
 create-react-app my-project
 Then move into that folder and issue the command yarn/npm start
 
+TYPES OF STATE:
+
+Type:               Example:                            REDUX?
+Local UI State      Show/Hide Modal                     NO, mostly handled within components
+Persistent State    All Users, All Posts etc            YES, relevant pieces managed by Redux
+Client State        Is Authenticated? Filters set etc   YES! Managed by Redux
