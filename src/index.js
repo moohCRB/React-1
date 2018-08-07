@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 import { Provider } from "react-redux"; // wrap our app with this component to connect react with redux
 
 import "./index.css";
 import App from "./Containers/App";
-import reducer from "./store/reducer";
+import counterReducer from "./store/reducers/counter";
+import resultReducer from "./store/reducers/result";
 import registerServiceWorker from "./registerServiceWorker";
 import AppPosts from "./Containers/App_Posts";
 import AppCounter from "./Containers/App_Counter";
@@ -32,7 +33,12 @@ import AppCounter from "./Containers/App_Counter";
 //     return Promise.reject(error);
 // })
 
-const store = createStore(reducer); // creates a store with our reducer
+const rootReducer = combineReducers({
+  ctr1: counterReducer,
+  res1: resultReducer
+});
+
+const store = createStore(rootReducer); // creates a store with our reducer
 
 ReactDOM.render(
   <Provider store={store}>
