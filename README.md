@@ -17,7 +17,7 @@ Testing React Applications.<br>
 Deploying the React application to a server.<br>
 Animating the React application.<br>
 
-To view the project, check into the React folder and run:<br>
+To view the project, check into the React folder and run:<br><br>
 **Using Yarn:**<br>
 `yarn start`<br><br>
 **Using npm:** <br>
