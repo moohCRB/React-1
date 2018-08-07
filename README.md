@@ -19,6 +19,6 @@ Animating the React application.<br>
 
 To view the project, check into the React folder and run:<br>
 **Using Yarn:**<br>
-
-- `yarn start`
-  **Using npm:** \*`npm start`
+`yarn start`<br>
+**Using npm:** <br>
+`npm start`
