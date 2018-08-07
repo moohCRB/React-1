@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { createStore } from "redux";
+import { Provider } from "react-redux"; // wrap our app with this component to connect react with redux
+
 import "./index.css";
 import App from "./Containers/App";
-import { createStore } from "redux";
 import reducer from "./store/reducer";
 import registerServiceWorker from "./registerServiceWorker";
 import AppPosts from "./Containers/App_Posts";
-
+import AppCounter from "./Containers/App_Counter";
 // import axios from "axios";
 
 // Sets up the defaults for ALL requests being sent
@@ -30,7 +32,12 @@ import AppPosts from "./Containers/App_Posts";
 //     return Promise.reject(error);
 // })
 
-const store = createStore(reducer);
+const store = createStore(reducer); // creates a store with our reducer
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <Provider store={store}>
+    <AppCounter />
+  </Provider>,
+  document.getElementById("root")
+);
 registerServiceWorker();

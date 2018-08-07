@@ -1,4 +1,4 @@
-import React, { Component,PureComponent } from "react";
+import React, { Component, PureComponent } from "react";
 // PureComponent has the logic of shouldComponentUpdate already built-in
 import "./App_Person.css";
 import Person from "../Components/Persons/Person"; // this has to be imported as an uppercase for it to be rendered.
@@ -7,22 +7,22 @@ import EIButton from "../Components/InputButton";
 
 class App extends Component {
   // What we're about to do can be only with classes that EXTENDS components
-  constructor(props){ // this receives the props this component gets
-super(props) // without this, the props is ONLY in the constructor scope as props.xtz ; now it is accesible throughout the component
-// now we can use props.xyz
-console.log('[App.js] Inside Constructor()', props)
-// We could initialise the state in this method
-// this.state = {
-  // bob:"Marley"
-}
-  
-  
-  componentWillMount() { // try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there)
-    console.log('[App.js] Inside componentWillMount()')
+  constructor(props) {
+    // this receives the props this component gets
+    super(props); // without this, the props is ONLY in the constructor scope as props.xtz ; now it is accesible throughout the component
+    // now we can use props.xyz
+    console.log("[App.js] Inside Constructor()", props);
+    // We could initialise the state in this method
+    // this.state = {
+    // bob:"Marley"
   }
-  componentDidMount(){
-    console.log('[App.js] Inside componentDidMount()')
 
+  componentWillMount() {
+    // try to avoid, discouraged by React 16.3 due to incorrect use (setting state in there)
+    console.log("[App.js] Inside componentWillMount()");
+  }
+  componentDidMount() {
+    console.log("[App.js] Inside componentDidMount()");
   }
   state = {
     persons: [
@@ -73,12 +73,14 @@ console.log('[App.js] Inside Constructor()', props)
 
   togglePersonsHandler = () => {
     const show = this.state.showPersons;
-    this.setState((prevState,props)=>{ // User an arrow function that takes the prevState which can then be mutated
-      return{  showPersons: !show,
-        // toggleClicked: this.state.toggleClicked +1 // even though this works, it might not always give the correct 
+    this.setState((prevState, props) => {
+      // User an arrow function that takes the prevState which can then be mutated
+      return {
+        showPersons: !show,
+        // toggleClicked: this.state.toggleClicked +1 // even though this works, it might not always give the correct
         // // output as setState is an ASYNCHRONOUS METHOD done by react
-        toggleClicked:prevState.toggleClicked+1
-  } 
+        toggleClicked: prevState.toggleClicked + 1
+      };
     });
   };
 
@@ -104,19 +106,20 @@ console.log('[App.js] Inside Constructor()', props)
     });
   };
 
-  enableInputHandler=()=>{
-  const input = this.state.enableInput;
-  this.setState({ enableInput: !input });
-}
-// shouldComponentUpdate(nextProps,nextState){ // Rather than use this logic, we can import from PureComponent
-//   return nextState.persons !== this.state.persons || 
-//   nextState.showPersons!==this.state.showPersons ||
-//   nextState.enableInput !== this.state.enableInput ;
-// // return true
-// }
+  enableInputHandler = () => {
+    const input = this.state.enableInput;
+    this.setState({ enableInput: !input });
+  };
+  // shouldComponentUpdate(nextProps,nextState){ // Rather than use this logic, we can import from PureComponent
+  //   return nextState.persons !== this.state.persons ||
+  //   nextState.showPersons!==this.state.showPersons ||
+  //   nextState.enableInput !== this.state.enableInput ;
+  // // return true
+  // }
 
-  render() { // this is the only mandatory method, React needs to know what to render
-    console.log('[App.js] Inside Render()')
+  render() {
+    // this is the only mandatory method, React needs to know what to render
+    console.log("[App.js] Inside Render()");
     const style = {
       // styling the hover state is hard using inline styles, one restriction of this method but good for scoping
       // as it you decide which components use this style
@@ -125,7 +128,7 @@ console.log('[App.js] Inside Constructor()', props)
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
-      cursor: "pointer",
+      cursor: "pointer"
     };
 
     const classes = [];
@@ -141,7 +144,13 @@ console.log('[App.js] Inside Constructor()', props)
       //in normal HTML we'd use the word class, but because this is JS we can't do that as its a reserved keyword.
       <div className="App">
         <h1>Hi, I'm a React App</h1>
-        <button onClick={()=>{this.setState({showPersons:true})}}>Show Persons</button>
+        <button
+          onClick={() => {
+            this.setState({ showPersons: true });
+          }}
+        >
+          Show Persons
+        </button>
         <p className={classes.join(" ")}> So far so good!</p>
         <button
           style={style}
@@ -165,14 +174,14 @@ console.log('[App.js] Inside Constructor()', props)
                 age={person.age}
                 key={person.id} // index is not a good idea (but it can work) as it can change if the array changes
                 changed={event => this.nameChangedHandler(event, person.id)}
-                enableInput = {this.state.enableInput}
+                enableInput={this.state.enableInput}
               />
             ))}
             {/* We use index so we can find out which index is in the array that way we can delete only the one we clicked on */}
             {(style.backgroundColor = "red")}{" "}
             {/* find out why the string "red" is also shown on the screen*/}
             <RestartButton onClick={() => this.restartPersonsHandler()} />
-            <EIButton onClick={()=>this.enableInputHandler()} />
+            <EIButton onClick={() => this.enableInputHandler()} />
           </div>
         )}
       </div>
