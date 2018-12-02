@@ -10,6 +10,12 @@ class Counter extends Component {
     counter: 0
   };
 
+  componentDidMount() {
+    this.setState(() => {
+      return { inc: "dec" };
+    });
+  }
+
   counterChangedHandler = (action, value) => {
     switch (action) {
       case "inc":
@@ -52,6 +58,10 @@ class Counter extends Component {
         <CounterControl
           label="Subtract 10"
           clicked={this.props.onSubtractCounter}
+        />
+        <CounterControl
+          label="TODO"
+          clicked={()=>console.log("SALAM")}
         />
         <hr />
         <button onClick={() => this.props.onStoreResult(this.props.ctr)}>
